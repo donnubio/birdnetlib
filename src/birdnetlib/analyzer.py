@@ -384,7 +384,7 @@ class Analyzer:
         # Load TFLite model and allocate tensors.
         num_threads = 1  # Default from BN-A config
         self.interpreter = tflite.Interpreter(
-            model_path=self.model_path, num_threads=num_threads
+            model_path=self.model_path, num_threads=num_threads, experimental_preserve_all_tensors=True
         )
         self.interpreter.allocate_tensors()
 
@@ -479,7 +479,7 @@ class Analyzer:
         model_path = self.classifier_model_path
         num_threads = 1  # Default from BN-A config
         self.custom_interpreter = tflite.Interpreter(
-            model_path=model_path, num_threads=num_threads
+            model_path=model_path, num_threads=num_threads, experimental_preserve_all_tensors=True
         )
         self.custom_interpreter.allocate_tensors()
 
